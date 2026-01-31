@@ -2,13 +2,13 @@
 #define SKELETALMODEL_H
 
 #include "gl_core_4_3.hpp"
-#include "glm\glm.hpp"
+#include "glm/glm.hpp"
 #include <assimp/Importer.hpp>      // C++ importer interface
 #include <assimp/scene.h>           // Output data structure
 #include <assimp/postprocess.h>     // Post processing fla
 #include <vector>
 #include <map>
-#include "Drawable.h"
+#include "drawable.h"
 #include "Math3D.h"
 #include "glslprogram.h"
 

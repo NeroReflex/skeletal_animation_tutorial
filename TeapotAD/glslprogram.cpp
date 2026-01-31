@@ -1,7 +1,7 @@
 
 #include "glslprogram.h"
 
-
+#include <cstdio>
 #include <fstream>
 using std::ifstream;
 using std::ios;
@@ -142,7 +142,7 @@ throw(GLSLProgramException)
   // Check for errors
   int result;
   gl::GetShaderiv( shaderHandle, gl::COMPILE_STATUS, &result );
-  if( FALSE == result ) {
+  if( gl::FALSE_ == result ) {
     // Compile failed, get log
     int length = 0;
     string logString;
@@ -180,7 +180,7 @@ void GLSLProgram::link() throw(GLSLProgramException)
 
   int status = 0;
   gl::GetProgramiv( handle, gl::LINK_STATUS, &status);
-  if( FALSE == status ) {
+  if( gl::FALSE_ == status ) {
     // Store log and return false
     int length = 0;
     string logString;
@@ -255,13 +255,13 @@ void GLSLProgram::setUniform( const char *name, const vec2 & v)
 void GLSLProgram::setUniform( const char *name, const mat4 & m)
 {
   GLint loc = getUniformLocation(name);
-  gl::UniformMatrix4fv(loc, 1, FALSE, &m[0][0]);
+  gl::UniformMatrix4fv(loc, 1, gl::FALSE_, &m[0][0]);
 }
 
 void GLSLProgram::setUniform( const char *name, const mat3 & m)
 {
   GLint loc = getUniformLocation(name);
-  gl::UniformMatrix3fv(loc, 1, FALSE, &m[0][0]);
+  gl::UniformMatrix3fv(loc, 1, gl::FALSE_, &m[0][0]);
 }
 
 void GLSLProgram::setUniform( const char *name, float val )
@@ -290,8 +290,8 @@ void GLSLProgram::setUniform( const char *name, bool val )
 
 void GLSLProgram::setUniformIndex(unsigned int Index, const Matrix4f& matIn)
 {
-	// Pass transformation matrix to uniform array. 
-	gl::UniformMatrix4fv(m_boneLocation[Index], 1, TRUE, (const GLfloat*)matIn.m);
+  // Pass transformation matrix to uniform array. 
+  gl::UniformMatrix4fv(m_boneLocation[Index], 1, gl::TRUE_, (const GLfloat*)matIn.m);
 }
 
 void GLSLProgram::initialiseBoneUniforms()
@@ -300,7 +300,7 @@ void GLSLProgram::initialiseBoneUniforms()
 
 		char Name[128];
 		memset(Name, 0, sizeof(Name));
-		_snprintf_s(Name, sizeof(Name), "gBones[%d]", i);
+    snprintf(Name, sizeof(Name), "gBones[%d]", i);
 		m_boneLocation[i] = gl::GetUniformLocation(handle, Name);
 	}
 }
@@ -422,7 +422,7 @@ void GLSLProgram::validate() throw(GLSLProgramException)
   gl::ValidateProgram( handle );
   gl::GetProgramiv( handle, gl::VALIDATE_STATUS, &status );
 
-  if( FALSE == status ) {
+  if( gl::FALSE_ == status ) {
     // Store log and return false
     int length = 0;
     string logString;

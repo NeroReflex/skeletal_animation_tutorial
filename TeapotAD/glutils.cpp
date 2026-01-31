@@ -15,7 +15,7 @@ int GLUtils::checkForOpenGLError(const char * file, int line) {
     int    retCode = 0;
 
     glErr = gl::GetError();
-    while (glErr != NO_ERROR)
+    while (glErr != gl::NO_ERROR_)
     {
 		const char * message = "";
 		switch( glErr )

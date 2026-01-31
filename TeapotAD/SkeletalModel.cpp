@@ -112,11 +112,11 @@ void SkeletalModel::InitFromScene(const aiScene* pScene, const std::string& File
 
 	// Vertex positions 
 	gl::EnableVertexAttribArray(0);
-	gl::VertexAttribPointer(0, 3, gl::FLOAT, FALSE, sizeof(VertexStruct), (GLvoid*)0);
+	gl::VertexAttribPointer(0, 3, gl::FLOAT, gl::FALSE_, sizeof(VertexStruct), (GLvoid*)0);
 
 	// Vertex Normals
 	gl::EnableVertexAttribArray(1);
-	gl::VertexAttribPointer(1, 3, gl::FLOAT, FALSE, sizeof(VertexStruct), (GLvoid*)offsetof(VertexStruct, normal));
+	gl::VertexAttribPointer(1, 3, gl::FLOAT, gl::FALSE_, sizeof(VertexStruct), (GLvoid*)offsetof(VertexStruct, normal));
 
 	//// Vertex Texture Coords
 	//gl::EnableVertexAttribArray(2);
@@ -130,7 +130,7 @@ void SkeletalModel::InitFromScene(const aiScene* pScene, const std::string& File
 	gl::VertexAttribIPointer(2, 4, gl::INT, sizeof(VertexBoneData), (const GLvoid*)0);
 
 	gl::EnableVertexAttribArray(3);
-	gl::VertexAttribPointer(3, 4, gl::FLOAT, FALSE, sizeof(VertexBoneData), (const GLvoid*)16);
+	gl::VertexAttribPointer(3, 4, gl::FLOAT, gl::FALSE_, sizeof(VertexBoneData), (const GLvoid*)16);
 
 	gl::BindBuffer(gl::ELEMENT_ARRAY_BUFFER, ebo);
 	gl::BufferData(gl::ELEMENT_ARRAY_BUFFER, sizeof(Indices[0]) * Indices.size(), &Indices[0],

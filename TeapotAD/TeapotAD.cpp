@@ -156,7 +156,7 @@ void resizeGL(QuatCamera camera, int w, int h ) {
 /////////////////////////////////////////////////////////////////////////////////////////////
 // main entry point
 /////////////////////////////////////////////////////////////////////////////////////////////
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char* argv[])
 {
 	// Initialize GLFW
 	if( !glfwInit() ) exit( EXIT_FAILURE );
@@ -164,10 +164,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	// Select OpenGL 4.3 with a forward compatible core profile.
 	glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 4 );
 	glfwWindowHint( GLFW_CONTEXT_VERSION_MINOR, 3 );
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, TRUE);
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_RESIZABLE, FALSE);
-	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, TRUE);
+	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
 
 	// Open the window
 	string title = "Skeletal Animation w/ Assimp";
